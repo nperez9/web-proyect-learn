@@ -1,4 +1,8 @@
 'use server';
+
+import { saveMeal } from '@/services/meals';
+import { redirect } from 'next/navigation';
+
 // executes only on server
 export async function shareMeal(formData: FormData) {
   const meal = {
@@ -9,6 +13,7 @@ export async function shareMeal(formData: FormData) {
     instructions: formData.get('instructions') as string,
     image: formData.get('image') as File,
   };
-  console.info(meal);
-  return { message: 'Meal shared!' };
+
+  await saveMeal(meal);
+  redirect('/meals');
 }

@@ -1,0 +1,21 @@
+
+.GameDockOverlay {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.GameDock {
+  min-height: 450px;
+  padding: 40px 10px;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.GameDockLinks {
+  border-top: 1px solid white;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.GameDockLinks h4 {
+  margin-bottom: 20px;
+}

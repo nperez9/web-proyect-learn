@@ -1,6 +1,11 @@
 import { getMeals } from '@/services/meals';
-import Image from 'next/image';
+import { Metadata } from 'next';
 import { Suspense } from 'react';
+
+export const metadata: Metadata = {
+  title: 'All Meals',
+  description: 'Here is the meals',
+};
 
 const ComponentMeals = async () => {
   const meals = await getMeals();

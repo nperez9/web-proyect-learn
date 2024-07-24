@@ -1,4 +1,6 @@
 export function isValidText(text: string): boolean {
+  const result = !!text && text.trim().length > 0;
+  console.log('isValidText', result);
   return !!text && text.trim().length > 0;
 }
 

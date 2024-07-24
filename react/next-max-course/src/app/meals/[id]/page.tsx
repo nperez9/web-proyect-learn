@@ -2,10 +2,25 @@ import Image from 'next/image';
 import React from 'react';
 
 import { getMeal } from '@/services/meals';
+import { title } from 'process';
 
 export interface PortfolioDetailPageProps {
   params: {
     id: string;
+  };
+}
+
+// metadata for dinamic pages
+export async function generateMetada({ params }: PortfolioDetailPageProps) {
+  const meal = getMeal(Number(params.id)) as any;
+
+  if (!meal) {
+    return { title: 'Meal Not Found', description: 'The meal does not exist' };
+  }
+
+  return {
+    title: meal.title,
+    description: meal.description,
   };
 }
 

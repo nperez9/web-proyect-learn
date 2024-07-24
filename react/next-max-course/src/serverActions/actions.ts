@@ -1,6 +1,7 @@
 'use server';
 
 import { saveMeal } from '@/services/meals';
+import { isInvalidText } from '@/utils/validations';
 import { redirect } from 'next/navigation';
 
 // executes only on server
@@ -14,6 +15,15 @@ export async function shareMeal(formData: FormData) {
     instructions: formData.get('instructions') as string,
     image: formData.get('image') as File,
   };
+
+  if (
+    isInvalidText(meal.creator) ||
+    isInvalidText(meal.title) ||
+    isInvalidText(meal.summary) ||
+    isInvalidText(meal.instructions)
+  ) {
+    return new Error('Invalid form data');
+  }
 
   await saveMeal(meal);
   redirect('/meals');

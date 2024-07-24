@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 
 // executes only on server
 export async function shareMeal(formData: FormData) {
+  // TODO: validate form data
   const meal = {
     creator: formData.get('name') as string,
     creator_email: formData.get('email') as string,

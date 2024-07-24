@@ -1,7 +1,7 @@
 'use server';
 
 import { saveMeal } from '@/services/meals';
-import { isInvalidText } from '@/utils/validations';
+import { isValidText, isValidImage } from '@/utils/validations';
 import { redirect } from 'next/navigation';
 
 // executes only on server
@@ -17,10 +17,11 @@ export async function shareMeal(formData: FormData) {
   };
 
   if (
-    isInvalidText(meal.creator) ||
-    isInvalidText(meal.title) ||
-    isInvalidText(meal.summary) ||
-    isInvalidText(meal.instructions)
+    isValidText(meal.creator) &&
+    isValidText(meal.title) &&
+    isValidText(meal.summary) &&
+    isValidText(meal.instructions) &&
+    isValidImage(meal.image)
   ) {
     return new Error('Invalid form data');
   }

@@ -2,7 +2,6 @@ import Image from 'next/image';
 import React from 'react';
 
 import { getMeal } from '@/services/meals';
-import { title } from 'process';
 
 export interface PortfolioDetailPageProps {
   params: {
